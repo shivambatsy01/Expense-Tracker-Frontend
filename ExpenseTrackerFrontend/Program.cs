@@ -1,10 +1,14 @@
+using ExpenseTrackerFrontend.DataProviders.CategoryDataProvider;
 using ExpenseTrackerFrontend.DataProviders.ExpenseDataProvider;
+using ExpenseTrackerFrontend.DataProviders.UserDataProvider;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IExpenseDataProvider, ExpenseDataProvider>();
+builder.Services.AddScoped<ICategoryDataProvider, CategoryDataProvider>();
+builder.Services.AddScoped<IUserDataProvider, UserDataProvider>();
 
 var app = builder.Build();
 

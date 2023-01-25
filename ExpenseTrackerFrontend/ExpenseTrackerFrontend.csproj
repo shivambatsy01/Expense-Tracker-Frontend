@@ -7,10 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DataModules\" />
+    <Folder Include="Controllers\Expenses\" />
+    <Folder Include="Controllers\Category\" />
+    <Folder Include="Controllers\Users\" />
+    <Folder Include="Profiles\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="RestSharp" Version="108.0.3" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 

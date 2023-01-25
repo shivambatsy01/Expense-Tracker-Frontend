@@ -12,12 +12,12 @@ namespace ExpenseTrackerFrontend.DataProviders.ExpenseDataProvider
         public ExpenseDataProvider(IConfiguration configuration)
         {
             this.configuration = configuration;
-            urlRoute = configuration["APIServer"] + "expenses/";
+            urlRoute = configuration["APIServer"] + "expenses/" ;
         }
 
         public async Task<Expense> AddExpenseAsync(Guid userId, ExpenseApiModel expense)
         {
-            string serverUrl = urlRoute + userId.ToString();
+            string serverUrl = urlRoute + userId.ToString() +"/" ;
 
             var client = new RestClient(serverUrl);
             var request = new RestRequest();
@@ -30,7 +30,7 @@ namespace ExpenseTrackerFrontend.DataProviders.ExpenseDataProvider
 
         public async Task<Expense> DeleteExpenseAsync(Guid expenseId)
         {
-            string serverUrl = urlRoute + expenseId.ToString();
+            string serverUrl = urlRoute + expenseId.ToString() + "/" ;
 
             var client = new RestClient(serverUrl);
             var request = new RestRequest();
@@ -43,7 +43,7 @@ namespace ExpenseTrackerFrontend.DataProviders.ExpenseDataProvider
 
         public async Task<IEnumerable<Expense>> GetUserAllExpensesAsync(Guid userId)
         {
-            string serverUrl = urlRoute + "user-expenses" + userId.ToString();
+            string serverUrl = urlRoute + "user-expenses" + userId.ToString() + "/" ;
             var client = new RestClient(serverUrl);
             var request = new RestRequest();
             var response = await client.GetAsync(request); //need to deserialise response
@@ -54,7 +54,7 @@ namespace ExpenseTrackerFrontend.DataProviders.ExpenseDataProvider
 
         public async Task<Expense> UpdateExpenseAsync(Guid expenseId, ExpenseApiModel expense)
         {
-            string serverUrl = urlRoute + expenseId.ToString();
+            string serverUrl = urlRoute + expenseId.ToString() + "/" ;
             var client = new RestClient(serverUrl);
             var request = new RestRequest();
             var response = await client.PutAsync(request); //need to deserialise response
