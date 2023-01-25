@@ -1,0 +1,12 @@
+﻿namespace ExpenseTrackerFrontend.Models.APIModels
+{
+    public class ExpenseApiModel
+    {
+        public string Name { get; set; }
+        public double Amount { get; set; }
+        public DateTime DateOfExpense { get; set; }
+        public string Remarks { get; set; }
+        public Guid UserId { get; set; }
+        public int CategoryId { get; set; }
+    }
+}
