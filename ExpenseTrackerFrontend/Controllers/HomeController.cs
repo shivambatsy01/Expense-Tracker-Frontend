@@ -32,13 +32,5 @@ namespace ExpenseTrackerFrontend.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-
-        [Route("{test-api}")]
-        public async Task<IActionResult> TestAPI()
-        {
-            var id = new Guid();
-            var response = await expenseDataProvider.DeleteExpenseAsync(id);
-            return Ok(response);
-        }
     }
 }
