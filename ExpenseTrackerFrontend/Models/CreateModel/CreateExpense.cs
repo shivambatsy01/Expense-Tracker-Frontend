@@ -1,4 +1,4 @@
-﻿namespace ExpenseTrackerFrontend.Models.AddData
+﻿namespace ExpenseTrackerFrontend.Models.CreateModel
 {
     public class CreateExpense
     {

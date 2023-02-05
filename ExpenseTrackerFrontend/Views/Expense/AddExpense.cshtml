@@ -1,7 +1,44 @@
-﻿@page
-@model ExpenseTrackerFrontend.Views.Expense.AddExpenseModel
-@{
+﻿@*@model Expense*@
 
-    //var CategoryData = new string[] { "Category1", "Category2", "Category3", "Category4", "Category5", "Category6"};
+@using ExpenseTrackerFrontend.Models.CreateModel;
+@using ExpenseTrackerFrontend.DTO;
+@{
+    //ViewData["Title"] = "Home Page";
+    if(ViewData["Title"] == null)
+    {
+        <h1> view is null</h1>
+    }
+    var CategoryData = new string[] { "Food", "Education", "Travel", "Health", "Miscellaneous"}; //use enum later
+    var expense = new CreateExpense
+    {
+        DateOfExpense = DateTime.Now, //default
+        CategoryId = 5 //take miscellaneous as defaults if user doesn't select or change it
+    };
 }
 
+
+
+
+<form method="post" asp-action="AddExpense">
+    <div class="mb-3">
+        <label for="ExpenseName" class="form-label">Expense Name</label>
+        <input type="text" class="form-control" id="ExpenseName" asp-for="@expense.Name">
+    </div>
+    <div class="mb-3">
+        <label for="ExpenseAmount" class="form-label">Amount</label>
+        <input type="number" class="form-control" id="ExpenseAmount" asp-for="@expense.Amount">
+    </div>
+    <div class="mb-3">
+        <ejs-datetimepicker id="datetimepicker" placeholder="Date and time of expense"></ejs-datetimepicker>
+    </div>
+    <div class="mb-3">
+        <label for="ExpenseRemark" class="form-label">Remark</label>
+        <input type="text" class="form-control" id="ExpenseRemark" asp-for="@expense.Remarks">
+    </div>
+    <div class="mb-3">
+        <ejs-dropdownlist id="Categories" dataSource="CategoryData" placeholder="Select Category" popupHeight="220px">
+        </ejs-dropdownlist>
+    </div>
+    <button type="submit" class="btn btn-primary">
+    </button>
+</form>
