@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Profiles\" />
+    <Folder Include="Views\Auhentication\" />
   </ItemGroup>
 
   <ItemGroup>

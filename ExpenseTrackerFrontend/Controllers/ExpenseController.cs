@@ -1,20 +1,22 @@
-﻿using ExpenseTrackerFrontend.Models.CreateModel;
+﻿using ExpenseTrackerFrontend.Global;
+using ExpenseTrackerFrontend.Models.CreateModel;
 using ExpenseTrackerFrontend.Models.Domain;
 using ExpenseTrackerFrontend.Views;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Http.Headers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Session;
 
 namespace ExpenseTrackerFrontend.Controllers
 {
     [Route("expense")]
     public class ExpenseController : Controller  //one view foldeer per controller
     {
-        //public IActionResult Index()
-        //{
-        //    //It doesnot have any view with name 'Index' in View\Expense
-        //    //It will return error untill there is view with name 'Index'
-        //    return View();
-
-        //}
+        private readonly ICustomSessionStore SessionStore;
+        public ExpenseController(ICustomSessionStore SessionStore)
+        {
+            this.SessionStore = SessionStore;
+        }
 
         [HttpGet]
         [Route("add")]
@@ -35,13 +37,18 @@ namespace ExpenseTrackerFrontend.Controllers
               ----
              -----*/
             ///
+            //how to get userID from UI -> retrieve using session
+            //implement session state
 
-            return await ViewExpenses();
+            //return  ViewExpenses();
+            return null;
         }
 
 
-        public async Task<IActionResult> ViewExpenses()
+        [HttpGet]
+        public async Task<IActionResult> ViewExpenses([FromHeader] RequestHeaders requestHeaders)
         {
+            var cookie = requestHeaders.Cookie;
             var Expenses = new List<Expense>
             {
                 new Expense
@@ -76,7 +83,8 @@ namespace ExpenseTrackerFrontend.Controllers
                 }
             };
 
-            ViewData["Expenses"] = Expenses; 
+            ViewData["Expenses"] = Expenses;
+            //ViewData["SessionUser"] = 
             return View();
         }
     }

@@ -3,12 +3,17 @@
 @{
     ViewData["Title"] = "Your Expenses";
     var Expenses = ViewData["Expenses"] as List<Expense>;
+    string user = ViewData["SessionUser"] as string;
     var myint = 2;
 }
 
 
 <body>
-    <h1>Your Expenses</h1>
+    @{
+        var message = "Welcome" + user;
+        <h1>@message</h1>
+    }
+
     @foreach(var expense in Expenses)
     {
         <div>

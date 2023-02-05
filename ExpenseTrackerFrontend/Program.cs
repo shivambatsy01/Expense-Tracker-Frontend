@@ -1,6 +1,8 @@
 using ExpenseTrackerFrontend.DataProviders.CategoryDataProvider;
 using ExpenseTrackerFrontend.DataProviders.ExpenseDataProvider;
 using ExpenseTrackerFrontend.DataProviders.UserDataProvider;
+using ExpenseTrackerFrontend.Global;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,15 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IExpenseDataProvider, ExpenseDataProvider>();
 builder.Services.AddScoped<ICategoryDataProvider, CategoryDataProvider>();
 builder.Services.AddScoped<IUserDataProvider, UserDataProvider>();
+builder.Services.AddSingleton<ICustomSessionStore, SessionStore>();
+
+//builder.Services.AddDistributedMemoryCache();
+//builder.Services.AddSession(options =>
+//{
+//    options.IdleTimeout = TimeSpan.FromSeconds(10000);
+//    options.Cookie.HttpOnly = true;
+//    options.Cookie.IsEssential = true;
+//});
 
 var app = builder.Build();
 
@@ -25,6 +36,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
+app.UseSession();
 
 app.UseRouting();
 

@@ -1,6 +1,9 @@
-﻿namespace ExpenseTrackerFrontend.DataProviders.UserDataProvider
+﻿using ExpenseTrackerFrontend.Models.CreateModel;
+
+namespace ExpenseTrackerFrontend.DataProviders.UserDataProvider
 {
-    public class IUserDataProvider
+    public interface IUserDataProvider
     {
+        public UserLogin GetUserDetails(string username);
     }
 }
