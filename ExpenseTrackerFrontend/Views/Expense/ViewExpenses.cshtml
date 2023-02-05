@@ -1,1 +1,31 @@
-﻿
+﻿@using ExpenseTrackerFrontend.Models.Domain;
+
+@{
+    ViewData["Title"] = "Your Expenses";
+    var Expenses = ViewData["Expenses"] as List<Expense>;
+    var myint = 2;
+}
+
+
+<body>
+    <h1>Your Expenses</h1>
+    @foreach(var expense in Expenses)
+    {
+        <div>
+            @expense.Name
+        </div>
+        <div>
+            @expense.Amount
+        </div>
+        <div>
+            @expense.Remarks
+        </div>
+    }
+</body>
+
+<footer>
+    <button>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Expense" asp-action="AddExpense">Add an Expense</a>
+    </button>
+</footer>
+

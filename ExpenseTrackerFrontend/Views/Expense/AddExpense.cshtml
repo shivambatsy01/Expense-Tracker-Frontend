@@ -29,7 +29,9 @@
         <input type="number" class="form-control" id="ExpenseAmount" asp-for="@expense.Amount">
     </div>
     <div class="mb-3">
-        <ejs-datetimepicker id="datetimepicker" placeholder="Date and time of expense"></ejs-datetimepicker>
+        <label for="ExpenseAmount" class="form-label">Date</label>
+        <input type="datetime-local" class="form-control" id="ExpenseDate" asp-for="@expense.DateOfExpense">
+        @*<ejs-datetimepicker id="datetimepicker" placeholder="Date and time of expense"></ejs-datetimepicker>*@
     </div>
     <div class="mb-3">
         <label for="ExpenseRemark" class="form-label">Remark</label>
